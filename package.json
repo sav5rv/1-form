@@ -2,17 +2,21 @@
   "name": "1-form",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node node_modules/nodemon/bin/nodemon bin/server",
+    "start": "nodemon server --ignore public --ignore frontend"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^3.1.10",
     "express": "^4.21.2",
     "install": "^0.13.0",
     "mysql2": "^3.11.5",
+    "nodemon": "^3.1.9",
     "npm": "^10.9.2",
     "pdf-lib": "^1.17.1"
   }
