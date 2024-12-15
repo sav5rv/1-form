@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
+</head>
+<body>
+    <form id="invoiceForm">
+            <div>
+              <label for="raiaNum">Num Raia:</label>
+              <input type="text" id="raiaNum" />
+            </div>
+            <div>
+              <label for="codOPM">Cod OPM:</label>
+              <input type="text" id="codOPM" />
+            </div>
+            <div>
+              <label for="natureza">Natureza:</label>
+              <textarea id="natureza"></textarea>
+            </div>
+      
+        <button type="button" onclick="fillPdf()">Preencher PDF</button>
+    </form>
+      <script>
+        async function fillPdf() {
+        // Carregue o PDF preenchível
+        const pdfUrl = '../modelo/PMO31Modoptimize.pdf';  // Substitua com o caminho para o PDF
+        const existingPdfBytes = await fetch(pdfUrl).then(res => res.arrayBuffer());
+
+        // Carregue o PDF usando pdf-lib
+        const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
+        const form = pdfDoc.getForm();
+
+        // Obtenha os valores dos campos HTML
+        const raiaNum = document.getElementById('raiaNum').value;
+        const codOPM = document.getElementById('codOPM').value;
+        const natureza = document.getElementById('natureza').value;
+
+        // Mapear para os campos do PDF usando seus nomes
+        form.getTextField('raiaNum').setText(raiaNum);
+        form.getTextField('codOPM').setText(codOPM);
+        form.getTextField('natureza').setText(natureza);
+
+        // Salvar o PDF preenchido
+        const pdfBytes = await pdfDoc.save();
+
+        // Download do PDF preenchido
+        const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'invoice_filled.pdf';
+        link.click();
+        }
+
+      </script>
+</body>
+</html>

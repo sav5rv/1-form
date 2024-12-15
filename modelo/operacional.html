@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
+  <style rel="stylesheet" type="text/css">
+    #border0 {
+      border-left: 3px solid #841562;
+      border-right: 3px solid #841562;
+    }
+
+    /* formata o cabecalho inicial*/
+    #border1 {
+      border: 3px solid #841562;
+      border-radius: 15px;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    /* formata uma borda para separar os grupos de op realizadas */
+    #border2 {
+      border-top: 3px solid #841562;
+    }
+
+    /* primeira parte para arredondar a borda das tabelas */
+    #borderTb0 {
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 0.8rem;
+    }
+
+    /* segunda parte para arredondar a borda das tabelas */
+    #borderTb0,
+    #borderTb1 {
+      border: 3px solid #841562;
+      border-spacing: 0;
+      border-radius: 9px;
+      -moz-border-radius: 9px;
+      -webkit-border-radius: 9px;
+      -ms-border-radius: 9px;
+      padding: 0px;
+      /* Lista com prefixo de cada navegador
+					Mozilla Firefox: -moz-
+					Google Chrome e Safari: -webkit-
+					Opera: -o-
+					Internet Explorer: -ms-*/
+    }
+
+    /* formata os cabeçalhos dos resultados da tb Op Realizada */
+    #tbOperResult {
+      /*color: #000000;*/
+      font-size: 0.7rem;
+      font-weight: bold;
+      /*text-align: center;*/
+    }
+
+    th {
+      text-align: inherit;
+      font-size: 0.9rem;
+    }
+
+    td {
+      padding: 55px;
+    }
+
+    /*#espaco {
+      position: relative;
+      min-height: 1px;
+      padding-top: 15px;
+      padding-left: 15px;
+    }*/
+  </style>
+</head>
+
+<body>
+  <div class="py-0">
+    <div class="container">
+      <div class="row" id="border1">
+        <!-- img buscada de um site externo para facilitar a subida do site no tablet-->
+        <div class="col-md-2"><img class="d-block my-1 mx-auto" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Bras%C3%A3o_do_Estado_de_S%C3%A3o_Paulo_Tra%C3%A7o.png/1024px-Bras%C3%A3o_do_Estado_de_S%C3%A3o_Paulo_Tra%C3%A7o.png" width="80px"></div>
+        <div id="border0" class="col-md-5 text-center w-100 py-2" style="font-size: 1.1rem;">POLÍCIA MILITAR<br> DO<br> ESTADO DE SÃO PAULO</div>
+        <div class="col-md-5 text-center my-2" style="">5º BATALHÃO DE POLICIAMENTO RODOVIÁRIO<br> 2ª COMPANHIA<br> RELATÓRIO DE SERVIÇO OPERACIONAL-RSO<br> Equipe Operacional</div>
+      </div>
+    </div>
+  </div>
+  <!--  
+
+inicio do RSO
+
+-->
+  <div class="py-0">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <table id="borderTb0" class="table table-sm">
+              <thead>
+                <tr>
+                  <th>INFORMAÇÕES PRELIMINARES</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style=" padding: 0px;"><label for="inputDt">Data: </label><input type="date" id="inputDt" value="2020-07-16" min="2018-01-01" max="2030-12-31" style="	width: 120px;padding: 0px;height: 25px;">
+                    <label for="inputHoraInicio">Hora Início:</label><input type="time" id="inputHoraInicio" class="form-group" maxlength="5" size="2" style="	width:70px; padding: 0px; height: 25px;">
+                    <label for="inputHoraTermino">Hora Término:</label><input type="time" id="inputTermino" class="form-group" maxlength="5" size="2" style="	width: 70px; padding: 0px; height: 25px;">
+                    <label for="inputBop">BOp:</label><select id="inputBop" class="form-group" style="	width: 90px;padding: 0px;height: 25px;">
+                      <option value="" selected=""> </option>
+                      <option value="270/5">270/5</option>
+                      <option value="270/6">270/6</option>
+                      <option value="258/1">258/1</option>
+                      <option value="258/2">258/2</option>
+                      <option value="127/2">127/2</option>
+                    </select>
+                    <label for="inputTrabalho">Trabalho:</label><select id="inputTrabalho" class="form-group" style="	width: 95px;padding: 0px;height: 25px;">
+                      <option value="" selected=""> </option>
+                      <option value="adm">Adm</option>
+                      <option value="dejem">Dejem</option>
+                      <option value="escExtra">EscalaExtra</option>
+                      <option value="cgp">CGP</option>
+                      <option value="operacional">Operacional</option>
+                      <option value="tor">TOR</option>
+                    </select>
+                    <!--<label for="inputNumDoc1" class="">NúmRSO:</label><input type="text" id="inputNumDoc1" class="form-group" tabindex="1" maxlength="4" size="3" >-->
+                    <label for="inputVtr">Viatura:</label><input id="inputVtr" type="text" class="form-group" maxlength="7" style="	width: 75px;">
+                    <label for="inputOdomInicio">Odôm. Inícial:</label><input id="inputOdomInicio" class="form-group" type="tel" maxlength="6" style="	width: 80px;">
+                    <label for="inputOdomFim" class="">Odôm. Final:</label><input id="inputOdomFim" class="form-group" type="tel" maxlength="6" style="	width: 80px;">
+                    <label for="inputKmPerc" class="">Km Percorrido:</label><input id="inputKmPerc" class="form-group" type="tel" maxlength="6" style="	width: 80px;"><!-- usado tipo TEL para fixar a qtd caract-->
+                    <label for="inputCgp" class="">CGP da Equipe:</label><input id="inputCgp" class="form-group" type="text" maxlength="25" style="	width: 250px;">
+                    <label for="inputNumDoc" class="">NúmPPRi:</label><input id="inputNumDoc" class="form-group" type="text" maxlength="7" style="	width: 75px;">
+                  </td>
+                </tr>
+              </tbody>
+                <thead>
+                <tr>
+                  <th id="border2">EQUIPAMENTOS COLETIVOS UTILIZADOS</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style=" padding: 0px;">
+                    <label for="inputRadar">Radar:</label><input type="text" id="inputRadar" class="form-group" maxlength="10" style="width: 100px;">
+                    <label for="inputRadar">Etilômetro Passivo:</label><input type="text" id="inputEtilPassivo" class="form-group" maxlength="10" style="width: 100px;">
+                    <label for="inputEtilAtivo">Etilômetro Ativo:</label><input type="text" id="inputEtilAtivo" class="form-group" maxlength="10" style="width: 100px;">
+                    <label for="inputBinoculo">Binóculo:</label><input type="text" id="inputBinoculo" class="form-group" maxlength="10" style="width: 100px;">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!--  
+
+componentes da equipe
+
+-->
+          <div class="table-responsive">
+            <table id="borderTb0" class="table table-sm">
+              <thead>
+                <tr>
+                  <th colspan="8">COMPONENTES DA EQUIPE</th>
+                </tr>
+                <tr>
+                  <th colspan="1">Função</th>
+                  <th colspan="1">Posto/Grad</th>
+                  <th colspan="1">Nome</th>
+                  <th colspan="1">Celular</th>
+                  <th colspan="1">Colete</th>
+                  <th colspan="1">TMD DER</th>
+                  <th colspan="1">Arma-1</th>
+                  <th colspan="1">Arma-2</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style=" padding: 0px;"><select id="inputFuncao" class="form-control form-control-sm" style="width: 105px; padding: 0px; height: 25px;">
+                      <option value="" selected="">Qual sua função</option>
+                      <option value="Encarregao">Encarregado</option>
+                      <option value="Motorista">Motorista</option>
+                      <option value="Aux1">Aux 1</option>
+                      <option value="Aux2">Aux 2</option>
+                      <option value="Aux3">Aux 3</option>
+                    </select>
+                  </td>
+                  <td style=" padding: 0px;"> <select id="inputPostoGrad" class="form-control form-control-sm" style="width: 105px; padding: 0px; height: 25px;">
+                      <option selected="" value="Escolha...">Escolha...</option>
+                      <option value="Cap PM">Cap PM</option>
+                      <option value="Ten PM">1ºTen PM</option>
+                      <option value="Ten PM">2ºTen PM</option>
+                      <option value="SubTen PM">SubTen PM</option>
+                      <option value="Sgt PM">1ºSgt PM</option>
+                      <option value="Sgt PM">2ºSgt PM</option>
+                      <option value="Sgt PM">3ºSgt PM</option>
+                      <option value="Cb PM">Cb PM</option>
+                      <option value="Sd PM">Sd PM</option>
+                      <option value="Sd PM 2ªCl">Sd PM 2ªCla</option>
+                    </select>
+                  </td>
+                  <td style=" padding: 0px;"><input type="text" id="inputNome" class="form-control form-control-sm" maxlength="16" style="	width: 150px; padding: 0px; height: 25px;"></td>
+                  <td style=" padding: 0px;"><input type="text" id="inputCelular" class="form-control form-control-sm" maxlength="15" style=" width: 110px; padding: 0px; height: 25px;"></td>
+                  <td style=" padding: 0px;"><input type="text" id="inputColete" class="form-control form-control-sm" maxlength="10" style="	width: 100px; padding: 0px; height: 25px;"></td>
+                  <td style=" padding: 0px;"><input type="text" id="inputTmdDer" class="form-control form-control-sm" maxlength="10" style="	width: 100px; padding: 0px; height: 25px;"></td>
+                  <td style=" padding: 0px;"><input type="text" id="inputArma1" class="form-control form-control-sm" maxlength="10" style="	width: 90px; padding: 0px; height: 25px;"></td>
+                  <td style=" padding: 0px;"><input type="text" id="inputArma2" class="form-control form-control-sm" maxlength="10" style="	width: 90px; padding: 0px; height: 25px;"></td>
+                </tr>
+                <tr>
+                  <td style=" padding: 0px;"><select id="inputFuncao" class="form-control form-control-sm" style="width: 105px;padding: 0px;height: 25px;">
+                      <option value="" selected="">Qual sua função</option>
+                      <option value="Encarregao">Encarregado</option>
+                      <option value="Motorista">Motorista</option>
+                      <option value="Aux1">Aux 1</option>
+                      <option value="Aux2">Aux 2</option>
+                      <option value="Aux3">Aux 3</option>
+                    </select></td>
+                  <td style=" padding: 0px;"> <select id="inputPostoGrad" class="form-control form-control-sm" style="width: 105px;padding: 0px;height: 25px;">
+                      <option selected="" value="Escolha...">Escolha...</option>
+                      <option value="Cap PM">Cap PM</option>
+                      <option value="Ten PM">1ºTen PM</option>
+                      <option value="Ten PM">2ºTen PM</option>
+                      <option value="SubTen PM">SubTen PM</option>
+                      <option value="Sgt PM">1ºSgt PM</option>
+                      <option value="Sgt PM">2ºSgt PM</option>
+                      <option value="Sgt PM">3ºSgt PM</option>
+                      <option value="Cb PM">Cb PM</option>
+                      <option value="Sd PM">Sd PM</option>
+                      <option value="Sd PM 2ªCl">Sd PM 2ªCla</option>
+                    </select></td>
+                  <td style=" padding: 0px;"><input type="text" id="inputNome" class="form-control form-control-sm" maxlength="16" style="	width: 150px;padding: 0px;height: 25px;"></td>
+                  <td style=" padding: 0px;"><input type="text" id="inputCelular" class="form-control form-control-sm" maxlength="15" style="	width: 110px;padding: 0px;height: 25px;"></td>
+                  <td style=" padding: 0px;"><input type="text" id="inputColete" class="form-control form-control-sm" maxlength="10" style="	width: 100px;padding: 0px;height: 25px;"></td>
+                  <td style=" padding: 0px;"><input type="text" id="inputTmdDer" class="form-control form-control-sm" maxlength="10" style="	width: 100px;padding: 0px;height: 25px;"></td>
+                  <td style=" padding: 0px;"><input type="text" id="inputArma1" class="form-control form-control-sm" maxlength="10" style="	width: 90px;padding: 0px;height: 25px;"></td>
+                  <td style=" padding: 0px;"><input type="text" id="inputArma2" class="form-control form-control-sm" maxlength="10" style="	width: 90px;padding: 0px;height: 25px;"></td>
+                </tr>
+                <tr>
+                  <td style=" padding: 0px;"><select id="inputFuncao" class="form-control form-control-sm" style="width: 105px;padding: 0px;height: 25px;">
+                      <option value="" selected="">Qual sua função</option>
+                      <option value="Encarregao">Encarregado</option>
+                      <option value="Motorista">Motorista</option>
+                      <option value="Aux1">Aux 1</option>
+                      <option value="Aux2">Aux 2</option>
+                      <option value="Aux3">Aux 3</option>
+                    </select></td>
+                  <td style=" padding: 0px;"> <select id="inputPostoGrad" class="form-control form-control-sm" style="width: 105px;padding: 0px;height: 25px;">
+                      <option selected="" value="Escolha...">Escolha...</option>
+                      <option value="Cap PM">Cap PM</option>
+                      <option value="Ten PM">1ºTen PM</option>
+                      <option value="Ten PM">2ºTen PM</option>
+                      <option value="SubTen PM">SubTen PM</option>
+                      <option value="Sgt PM">1ºSgt PM</option>
+                      <option value="Sgt PM">2ºSgt PM</option>
+                      <option value="Sgt PM">3ºSgt PM</option>
+                      <option value="Cb PM">Cb PM</option>
+                      <option value="Sd PM">Sd PM</option>
+                      <option value="Sd PM 2ªCl">Sd PM 2ªCla</option>
+                    </select></td>
+                  <td style=" padding: 0px;"><input type="text" id="inputNome" class="form-control form-control-sm" maxlength="16" style="	width: 150px;padding: 0px;height: 25px;"></td>
+                  <td style=" padding: 0px;"><input type="text" id="inputCelular" class="form-control form-control-sm" maxlength="15" style="	width: 110px;padding: 0px;height: 25px;"></td>
+                  <td style=" padding: 0px;"><input type="text" id="inputColete" class="form-control form-control-sm" maxlength="10" style="	width: 100px;padding: 0px;height: 25px;"></td>
+                  <td style=" padding: 0px;"><input type="text" id="inputTmdDer" class="form-control form-control-sm" maxlength="10" style="	width: 100px;padding: 0px;height: 25px;"></td>
+                  <td style=" padding: 0px;"><input type="text" id="inputArma1" class="form-control form-control-sm" maxlength="10" style="	width: 90px;padding: 0px;height: 25px;"></td>
+                  <td style=" padding: 0px;"><input type="text" id="inputArma2" class="form-control form-control-sm" maxlength="10" style="	width: 90px;padding: 0px;height: 25px;"></td>
+                </tr>
+                <tr>
+                  <td style=" padding: 0px;"><select id="inputFuncao" class="form-control form-control-sm" style="width: 105px;padding: 0px;height: 25px;">
+                      <option value="" selected="">Qual sua função</option>
+                      <option value="Encarregao">Encarregado</option>
+                      <option value="Motorista">Motorista</option>
+                      <option value="Aux1">Aux 1</option>
+                      <option value="Aux2">Aux 2</option>
+                      <option value="Aux3">Aux 3</option>
+                    </select></td>
+                  <td style=" padding: 0px;"> <select id="inputPostoGrad" class="form-control form-control-sm" style="width: 105px;padding: 0px;height: 25px;">
+                      <option selected="" value="Escolha...">Escolha...</option>
+                      <option value="Cap PM">Cap PM</option>
+                      <option value="Ten PM">1ºTen PM</option>
+                      <option value="Ten PM">2ºTen PM</option>
+                      <option value="SubTen PM">SubTen PM</option>
+                      <option value="Sgt PM">1ºSgt PM</option>
+                      <option value="Sgt PM">2ºSgt PM</option>
+                      <option value="Sgt PM">3ºSgt PM</option>
+                      <option value="Cb PM">Cb PM</option>
+                      <option value="Sd PM">Sd PM</option>
+                      <option value="Sd PM 2ªCl">Sd PM 2ªCla</option>
+                    </select></td>
+                  <td style=" padding: 0px;"><input type="text" id="inputNome" class="form-control form-control-sm" maxlength="16" style="	width: 150px;padding: 0px;height: 25px;"></td>
+                  <td style=" padding: 0px;"><input type="text" id="inputCelular" class="form-control form-control-sm" maxlength="15" style="	width: 110px;padding: 0px;height: 25px;"></td>
+                  <td style=" padding: 0px;"><input type="text" id="inputColete" class="form-control form-control-sm" maxlength="10" style="	width: 100px;padding: 0px;height: 25px;"></td>
+                  <td style=" padding: 0px;"><input type="text" id="inputTmdDer" class="form-control form-control-sm" maxlength="10" style="	width: 100px;padding: 0px;height: 25px;"></td>
+                  <td style=" padding: 0px;"><input type="text" id="inputArma1" class="form-control form-control-sm" maxlength="10" style="	width: 90px;padding: 0px;height: 25px;"></td>
+                  <td style=" padding: 0px;"><input type="text" id="inputArma2" class="form-control form-control-sm" maxlength="10" style="	width: 90px;padding: 0px;height: 25px;"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!--
+
+EQUIPAMENTOS COLETIVOS
+
+
+          <div class="table-responsive">
+            <table id="borderTb0" class="table table-sm">
+              <thead>
+                <tr>
+                  <th>EQUIPAMENTOS COLETIVOS UTILIZADOS</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style=" padding: 0px;">
+                    <label for="inputRadar">Radar:</label><input type="text" id="inputRadar" class="form-group" maxlength="10" style="width: 100px;">
+                    <label for="inputRadar">Etilômetro Passivo:</label><input type="text" id="inputEtilPassivo" class="form-group" maxlength="10" style="width: 100px;">
+                    <label for="inputEtilAtivo">Etilômetro Ativo:</label><input type="text" id="inputEtilAtivo" class="form-group" maxlength="10" style="width: 100px;">
+                    <label for="inputBinoculo">Binóculo:</label><input type="text" id="inputBinoculo" class="form-group" maxlength="10" style="width: 100px;">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+
+OPERAÇÕES REALIZADAS
+
+-->
+          <div class="table-responsive">
+            <table id="borderTb0" class="table table-sm">
+              <thead>
+                <tr>
+                  <th colspan="12">OPERAÇÕES REALIZADAS</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="12" style=" padding: 0px;">
+                    <label for="inputTipo">Tipo:</label><input type="text" id="inputTipo" class="form-group" maxlength="20" style="width: 180px;">
+                    <label for="inputSp">SP:</label><input type="text" id="inputSp" class="form-group" maxlength="7" style="width: 70px;">
+                    <label for="inputKm">KM:</label><input type="text" id="inputKm" class="form-group" maxlength="7" style="width: 70px;">
+                    <label for="inputHinicio">Hora Início:</label><input type="time" id="inputHinicio" class="form-group" maxlength="5" style="width: 80px;">
+                    <label for="inputHtermino">Hora Término:</label><input type="time" id="inputHtermino" class="form-group" maxlength="5" style="width: 80px;">
+                  </td>
+                </tr>
+                <tr id="tbOperResult">
+                  <td colspan="1">Ultrap</td>
+                  <td colspan="1">Cinto</td>
+                  <td colspan="1">Cel</td>
+                  <td colspan="1">Radar</td>
+                  <td colspan="1">AI Moto</td>
+                  <td colspan="1">165 e 165A</td>
+                  <td colspan="1">Teste Passivo</td>
+                  <td colspan="1">Teste Ativo</td>
+                  <td colspan="1">Mau Estado</td>
+                  <td colspan="1">ARD</td>
+                  <td colspan="1">ARV</td>
+                  <td colspan="1">Veíc Fiscaliz</td>
+                </tr>
+                <tr>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" type="number" id="numAtiv">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <td colspan="12" style=" padding: 0px;" id="border2">
+                    <label for="inputTipo">Tipo:</label><input type="text" id="inputTipo" class="form-group" maxlength="20" style="width: 180px;">
+                    <label for="inputSp">SP:</label><input type="text" id="inputSp" class="form-group" maxlength="7" style="width: 70px;">
+                    <label for="inputKm">KM:</label><input type="text" id="inputKm" class="form-group" maxlength="7" style="width: 70px;">
+                    <label for="inputHinicio">Hora Início:</label><input type="time" id="inputHinicio" class="form-group" maxlength="5" style="width: 80px;">
+                    <label for="inputHtermino">Hora Término:</label><input type="time" id="inputHtermino" class="form-group" maxlength="5" style="width: 80px;">
+                  </td>
+                </tr>
+                <tr id="tbOperResult">
+                  <td colspan="1">Ultrap</td>
+                  <td colspan="1">Cinto</td>
+                  <td colspan="1">Cel</td>
+                  <td colspan="1">Radar</td>
+                  <td colspan="1">AI Moto</td>
+                  <td colspan="1">165 e 165A</td>
+                  <td colspan="1">Teste Passivo</td>
+                  <td colspan="1">Teste Ativo</td>
+                  <td colspan="1">Mau Estado</td>
+                  <td colspan="1">ARD</td>
+                  <td colspan="1">ARV</td>
+                  <td colspan="1">Veíc Fiscaliz</td>
+                </tr>
+                <tr>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" type="number" id="numAtiv">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <td id="border2" colspan="12" style=" padding: 0px;">
+                    <label for="inputTipo">Tipo:</label><input type="text" id="inputTipo" class="form-group" maxlength="20" style="width: 180px;">
+                    <label for="inputSp">SP:</label><input type="text" id="inputSp" class="form-group" maxlength="7" style="width: 70px;">
+                    <label for="inputKm">KM:</label><input type="text" id="inputKm" class="form-group" maxlength="7" style="width: 70px;">
+                    <label for="inputHinicio">Hora Início:</label><input type="time" id="inputHinicio" class="form-group" maxlength="5" style="width: 80px;">
+                    <label for="inputHtermino">Hora Término:</label><input type="time" id="inputHtermino" class="form-group" maxlength="5" style="width: 80px;">
+                  </td>
+                </tr>
+                <tr id="tbOperResult">
+                  <td colspan="1">Ultrap</td>
+                  <td colspan="1">Cinto</td>
+                  <td colspan="1">Cel</td>
+                  <td colspan="1">Radar</td>
+                  <td colspan="1">AI Moto</td>
+                  <td colspan="1">165 e 165A</td>
+                  <td colspan="1">Teste Passivo</td>
+                  <td colspan="1">Teste Ativo</td>
+                  <td colspan="1">Mau Estado</td>
+                  <td colspan="1">ARD</td>
+                  <td colspan="1">ARV</td>
+                  <td colspan="1">Veíc Fiscaliz</td>
+                </tr>
+                <tr>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" type="number" id="numAtiv">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <td id="border2" colspan="12" style=" padding: 0px;">
+                    <label for="inputTipo" class="">Tipo:</label><input type="text" id="inputTipo" class="form-group" maxlength="20" style="width: 180px;">
+                    <label for="inputSp" class="">SP:</label><input type="text" id="inputSp" class="form-group" maxlength="7" style="width: 70px;">
+                    <label for="inputKm" class="">KM:</label><input type="text" id="inputKm" class="form-group" maxlength="7" style="width: 70px;">
+                    <label for="inputHinicio" class="">Hora Início:</label><input type="time" id="inputHinicio" class="form-group" maxlength="5" style="width: 80px;">
+                    <label for="inputHtermino" class="">Hora Término:</label><input type="time" id="inputHtermino" class="form-group" maxlength="5" style="width: 80px;">
+                  </td>
+                </tr>
+                <tr id="tbOperResult">
+                  <td colspan="1">Ultrap</td>
+                  <td colspan="1">Cinto</td>
+                  <td colspan="1">Cel</td>
+                  <td colspan="1">Radar</td>
+                  <td colspan="1">AI Moto</td>
+                  <td colspan="1">165 e 165A</td>
+                  <td colspan="1">Teste Passivo</td>
+                  <td colspan="1">Teste Ativo</td>
+                  <td colspan="1">Mau Estado</td>
+                  <td colspan="1">ARD</td>
+                  <td colspan="1">ARV</td>
+                  <td colspan="1">Veíc Fiscaliz</td>
+                </tr>
+                <tr>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" type="number" id="numAtiv">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                </tr>
+              </tbody>
+                              <thead>
+                <tr>
+                  <th id="border2" colspan="12">TOTAL DAS ATIVIDADES DA EQUIPE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr id="tbOperResult">
+                  <td colspan="1">Ultrap</td>
+                  <td colspan="1">Cinto</td>
+                  <td colspan="1">Cel</td>
+                  <td colspan="1">Radar</td>
+                  <td colspan="1">AI Moto</td>
+                  <td colspan="1">165 e 165A</td>
+                  <td colspan="1">Teste Passivo</td>
+                  <td colspan="1">Teste Ativo</td>
+                  <td colspan="1">Mau Estado</td>
+                  <td colspan="1">ARD</td>
+                  <td colspan="1">ARV</td>
+                  <td colspan="1">Veíc Fiscaliz</td>
+                </tr>
+                <tr>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" type="number" id="numAtiv">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                </tr>
+              </tbody>
+              <!--              <tbody>
+                <tr>
+                  <td id="border2" colspan="12" style="padding-bottom: .5px" >
+                    <label for="inputTipo" class="">Tipo:</label><input type="text" id="inputTipo" class="form-group" maxlength="20" style="width: 150px;">
+                    <label for="inputSp" class="">SP:</label><input type="text" id="inputSp" class="form-group" maxlength="7" style="width: 70px;">
+                    <label for="inputKm" class="">KM:</label><input type="text" id="inputKm" class="form-group" maxlength="7" style="width: 70px;">
+                    <label for="inputHinicio" class="">Hora Início:</label><input type="time" id="inputHinicio" class="form-group" maxlength="5" style="width: 80px;">
+                    <label for="inputHtermino" class="">Hora Término:</label><input type="time" id="inputHtermino" class="form-group" maxlength="5" style="width: 80px;">
+                  </td>
+                </tr>
+                <tr id="tbOperResult">
+                  <td colspan="1" align="center">Ultrap</td>
+                  <td colspan="1" align="center">Cinto</td>
+                  <td colspan="1" align="center">Cel</td>
+                  <td colspan="1" align="center">Radar</td>
+                  <td colspan="1" align="center">AI Moto</td>
+                  <td colspan="1" align="center">165 e 165A</td>
+                  <td colspan="1" align="center">Teste Passivo</td>
+                  <td colspan="1" align="center">Teste Ativo</td>
+                  <td colspan="1" align="center">Mau Estado</td>
+                  <td colspan="1" align="center">ARD</td>
+                  <td colspan="1" align="center">ARV</td>
+                  <td colspan="1" align="center">Veíc Fiscaliz</td>
+                </tr>
+                <tr>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" type="number" id="numAtiv">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                </tr>
+              </tbody> -->
+            </table>
+          </div>
+          <!--
+
+resumo da atividade
+
+
+          <div class="table-responsive">
+            <table id="borderTb0" class="table table-sm">
+              <thead>
+                <tr>
+                  <th colspan="12">TOTAL DAS ATIVIDADES DA EQUIPE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr id="tbOperResult">
+                  <td colspan="1">Ultrap</td>
+                  <td colspan="1">Cinto</td>
+                  <td colspan="1">Cel</td>
+                  <td colspan="1">Radar</td>
+                  <td colspan="1">AI Moto</td>
+                  <td colspan="1">165 e 165A</td>
+                  <td colspan="1">Teste Passivo</td>
+                  <td colspan="1">Teste Ativo</td>
+                  <td colspan="1">Mau Estado</td>
+                  <td colspan="1">ARD</td>
+                  <td colspan="1">ARV</td>
+                  <td colspan="1">Veíc Fiscaliz</td>
+                </tr>
+                <tr>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" type="number" id="numAtiv">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                  <td width="3%" align="center">
+                    <input class="w-100" id="numAtiv" type="number">
+                  </td>
+                  <td width="3%" align="center">
+                    <input id="numAtiv" type="number" class="w-100">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+
+talões atendidos
+
+-->
+          <div class="table-responsive">
+            <table class="table table-sm" id="borderTb0">
+              <thead>
+                <tr>
+                  <th colspan="3">TALÕES GERADOS PARA A EQUIPE</th>
+                </tr>
+                <tr>
+                  <th colspan="1" style="font-size: 0.7rem;">Número</th>
+                  <th colspan="1" style="font-size: 0.7rem;">Hora</th>
+                  <th colspan="1" style="font-size: 0.7rem;">Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style=" padding: 0px;">
+                    <input id="talaoNum" type="text" maxlength="17" style="width: 180px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="talaoHora" type="time" style="	width: 80px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="talaoTipo" type="text" maxlength="30" style="	width: 290px;" class="p-0 px-0">
+                  </td>
+                </tr>
+                <tr>
+                  <td style=" padding: 0px;">
+                    <input id="talaoNum" type="text" style="width: 180px;" maxlength="17" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="talaoHora" type="time" style="	width: 80px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="talaoTipo" type="text" maxlength="30" style="	width: 290px;" class="p-0 px-0">
+                  </td>
+                </tr>
+                <tr>
+                  <td style=" padding: 0px;">
+                    <input id="talaoNum" type="text" style="width: 180px;" maxlength="17" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="talaoHora" type="time" style="	width: 80px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="talaoTipo" type="text" maxlength="30" style="	width: 290px;" class="p-0 px-0">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!--
+
+condutores fiscalizados
+
+-->
+          <div class="table-responsive">
+            <table class="table table-sm" id="borderTb0">
+              <thead>
+                <tr>
+                  <th colspan="8">CONDUTORES FISCALIZADOS</th>
+                </tr>
+                <tr>
+                  <th colspan="1" style="font-size: 0.7rem;">Hora</th>
+                  <th colspan="1" style="font-size: 0.7rem;">Marca</th>
+                  <th colspan="1" style="font-size: 0.7rem;">Modelo</th>
+                  <th colspan="1" style="font-size: 0.7rem;">Placa</th>
+                  <th colspan="1" style="font-size: 0.7rem;">Nome Condutor</th>
+                  <th colspan="1" style="font-size: 0.7rem;">CNH Condutor</th>
+                  <th colspan="1" style="font-size: 0.7rem;">PMRv</th>
+                  <th colspan="1" style="font-size: 0.7rem; ">SP/Km</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style=" padding: 0px;">
+                    <input id="fiscHora" type="time" style="width: 80px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscMarca" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscModelo" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPlaca" type="text" maxlength="8" style="	width: 90px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscNomeCond" type="text" maxlength="20" style="	width: 200px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscCnhCond" type="tel" maxlength="15" style="	width: 160px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPmrv" type="text" maxlength="10" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscSpkm" type="text" maxlength="7" style="	width: 50px;" placeholder="xxx-xxx" class="p-0 px-0 m-0 mx-0">
+                  </td>
+                </tr>
+                <tr>
+                  <td style=" padding: 0px;">
+                    <input id="fiscHora" type="time" style="width: 80px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscMarca" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscModelo" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPlaca" type="text" maxlength="8" style="	width: 90px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscNomeCond" type="text" maxlength="20" style="	width: 200px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscCnhCond" type="tel" maxlength="15" style="	width: 160px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPmrv" type="text" maxlength="10" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscSpkm" type="text" maxlength="7" style="	width: 50px;" placeholder="xxx-xxx" class="p-0 px-0 m-0 mx-0">
+                  </td>
+                </tr>
+                <tr>
+                  <td style=" padding: 0px;">
+                    <input id="fiscHora" type="time" style="width: 80px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscMarca" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscModelo" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPlaca" type="text" maxlength="8" style="	width: 90px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscNomeCond" type="text" maxlength="20" style="	width: 200px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscCnhCond" type="tel" maxlength="15" style="	width: 160px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPmrv" type="text" maxlength="10" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscSpkm" type="text" maxlength="7" style="	width: 50px;" placeholder="xxx-xxx" class="p-0 px-0 m-0 mx-0">
+                  </td>
+                </tr>
+                <tr>
+                  <td style=" padding: 0px;">
+                    <input id="fiscHora" type="time" style="width: 80px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscMarca" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscModelo" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPlaca" type="text" maxlength="8" style="	width: 90px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscNomeCond" type="text" maxlength="20" style="	width: 200px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscCnhCond" type="tel" maxlength="15" style="	width: 160px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPmrv" type="text" maxlength="10" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscSpkm" type="text" maxlength="7" style="	width: 50px;" placeholder="xxx-xxx" class="p-0 px-0 m-0 mx-0">
+                  </td>
+                </tr>
+                <tr>
+                  <td style=" padding: 0px;">
+                    <input id="fiscHora" type="time" style="width: 80px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscMarca" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscModelo" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPlaca" type="text" maxlength="8" style="	width: 90px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscNomeCond" type="text" maxlength="20" style="	width: 200px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscCnhCond" type="tel" maxlength="15" style="	width: 160px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPmrv" type="text" maxlength="10" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscSpkm" type="text" maxlength="7" style="	width: 50px;" placeholder="xxx-xxx" class="p-0 px-0 m-0 mx-0">
+                  </td>
+                </tr>
+                <tr>
+                  <td style=" padding: 0px;">
+                    <input id="fiscHora" type="time" style="width: 80px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscMarca" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscModelo" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPlaca" type="text" maxlength="8" style="	width: 90px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscNomeCond" type="text" maxlength="20" style="	width: 200px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscCnhCond" type="tel" maxlength="15" style="	width: 160px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPmrv" type="text" maxlength="10" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscSpkm" type="text" maxlength="7" style="	width: 50px;" placeholder="xxx-xxx" class="p-0 px-0 m-0 mx-0">
+                  </td>
+                </tr>
+                <tr>
+                  <td style=" padding: 0px;">
+                    <input id="fiscHora" type="time" style="width: 80px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscMarca" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscModelo" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPlaca" type="text" maxlength="8" style="	width: 90px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscNomeCond" type="text" maxlength="20" style="	width: 200px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscCnhCond" type="tel" maxlength="15" style="	width: 160px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPmrv" type="text" maxlength="10" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscSpkm" type="text" maxlength="7" style="	width: 50px;" placeholder="xxx-xxx" class="p-0 px-0 m-0 mx-0">
+                  </td>
+                </tr>
+                <tr>
+                  <td style=" padding: 0px;">
+                    <input id="fiscHora" type="time" style="width: 80px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscMarca" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscModelo" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPlaca" type="text" maxlength="8" style="	width: 90px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscNomeCond" type="text" maxlength="20" style="	width: 200px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscCnhCond" type="tel" maxlength="15" style="	width: 160px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPmrv" type="text" maxlength="10" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscSpkm" type="text" maxlength="7" style="	width: 50px;" placeholder="xxx-xxx" class="p-0 px-0 m-0 mx-0">
+                  </td>
+                </tr>
+                <tr>
+                  <td style=" padding: 0px;">
+                    <input id="fiscHora" type="time" style="width: 80px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscMarca" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscModelo" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPlaca" type="text" maxlength="8" style="	width: 90px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscNomeCond" type="text" maxlength="20" style="	width: 200px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscCnhCond" type="tel" maxlength="15" style="	width: 160px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPmrv" type="text" maxlength="10" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscSpkm" type="text" maxlength="7" style="	width: 50px;" placeholder="xxx-xxx" class="p-0 px-0 m-0 mx-0">
+                  </td>
+                </tr>
+                <tr>
+                  <td style=" padding: 0px;">
+                    <input id="fiscHora" type="time" style="width: 80px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscMarca" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscModelo" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPlaca" type="text" maxlength="8" style="	width: 90px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscNomeCond" type="text" maxlength="20" style="	width: 200px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscCnhCond" type="tel" maxlength="15" style="	width: 160px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPmrv" type="text" maxlength="10" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscSpkm" type="text" maxlength="7" style="	width: 50px;" placeholder="xxx-xxx" class="p-0 px-0 m-0 mx-0">
+                  </td>
+                </tr>
+                <tr>
+                  <td style=" padding: 0px;">
+                    <input id="fiscHora" type="time" style="width: 80px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscMarca" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscModelo" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPlaca" type="text" maxlength="8" style="	width: 90px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscNomeCond" type="text" maxlength="20" style="	width: 200px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscCnhCond" type="tel" maxlength="15" style="	width: 160px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPmrv" type="text" maxlength="10" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscSpkm" type="text" maxlength="7" style="	width: 50px;" placeholder="xxx-xxx" class="p-0 px-0 m-0 mx-0">
+                  </td>
+                </tr>
+                <tr>
+                  <td style=" padding: 0px;">
+                    <input id="fiscHora" type="time" style="width: 80px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscMarca" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscModelo" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPlaca" type="text" maxlength="8" style="	width: 90px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscNomeCond" type="text" maxlength="20" style="	width: 200px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscCnhCond" type="tel" maxlength="15" style="	width: 160px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPmrv" type="text" maxlength="10" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscSpkm" type="text" maxlength="7" style="	width: 50px;" placeholder="xxx-xxx" class="p-0 px-0 m-0 mx-0">
+                  </td>
+                </tr>
+                <tr>
+                  <td style=" padding: 0px;">
+                    <input id="fiscHora" type="time" style="width: 80px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscMarca" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscModelo" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPlaca" type="text" maxlength="8" style="	width: 90px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscNomeCond" type="text" maxlength="20" style="	width: 200px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscCnhCond" type="tel" maxlength="15" style="	width: 160px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPmrv" type="text" maxlength="10" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscSpkm" type="text" maxlength="7" style="	width: 50px;" placeholder="xxx-xxx" class="p-0 px-0 m-0 mx-0">
+                  </td>
+                </tr>
+                <tr>
+                  <td style=" padding: 0px;">
+                    <input id="fiscHora" type="time" style="width: 80px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscMarca" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscModelo" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPlaca" type="text" maxlength="8" style="	width: 90px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscNomeCond" type="text" maxlength="20" style="	width: 200px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscCnhCond" type="tel" maxlength="15" style="	width: 160px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPmrv" type="text" maxlength="10" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscSpkm" type="text" maxlength="7" style="	width: 50px;" placeholder="xxx-xxx" class="p-0 px-0 m-0 mx-0">
+                  </td>
+                </tr>
+                <tr>
+                  <td style=" padding: 0px;">
+                    <input id="fiscHora" type="time" style="width: 80px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscMarca" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscModelo" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPlaca" type="text" maxlength="8" style="	width: 90px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscNomeCond" type="text" maxlength="20" style="	width: 200px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscCnhCond" type="tel" maxlength="15" style="	width: 160px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPmrv" type="text" maxlength="10" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscSpkm" type="text" maxlength="7" style="	width: 50px;" placeholder="xxx-xxx" class="p-0 px-0 m-0 mx-0">
+                  </td>
+                </tr>
+                <tr>
+                  <td style=" padding: 0px;">
+                    <input id="fiscHora" type="time" style="width: 80px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscMarca" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscModelo" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPlaca" type="text" maxlength="8" style="	width: 90px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscNomeCond" type="text" maxlength="20" style="	width: 200px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscCnhCond" type="tel" maxlength="15" style="	width: 160px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPmrv" type="text" maxlength="10" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscSpkm" type="text" maxlength="7" style="	width: 50px;" placeholder="xxx-xxx" class="p-0 px-0 m-0 mx-0">
+                  </td>
+                </tr>
+                <tr>
+                  <td style=" padding: 0px;">
+                    <input id="fiscHora" type="time" style="width: 80px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscMarca" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscModelo" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPlaca" type="text" maxlength="8" style="	width: 90px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscNomeCond" type="text" maxlength="20" style="	width: 200px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscCnhCond" type="tel" maxlength="15" style="	width: 160px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPmrv" type="text" maxlength="10" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscSpkm" type="text" maxlength="7" style="	width: 50px;" placeholder="xxx-xxx" class="p-0 px-0 m-0 mx-0">
+                  </td>
+                </tr>
+                <tr>
+                  <td style=" padding: 0px;">
+                    <input id="fiscHora" type="time" style="width: 80px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscMarca" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscModelo" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPlaca" type="text" maxlength="8" style="	width: 90px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscNomeCond" type="text" maxlength="20" style="	width: 200px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscCnhCond" type="tel" maxlength="15" style="	width: 160px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPmrv" type="text" maxlength="10" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscSpkm" type="text" maxlength="7" style="	width: 50px;" placeholder="xxx-xxx" class="p-0 px-0 m-0 mx-0">
+                  </td>
+                </tr>
+                <tr>
+                  <td style=" padding: 0px;">
+                    <input id="fiscHora" type="time" style="width: 80px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscMarca" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscModelo" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPlaca" type="text" maxlength="8" style="	width: 90px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscNomeCond" type="text" maxlength="20" style="	width: 200px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscCnhCond" type="tel" maxlength="15" style="	width: 160px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPmrv" type="text" maxlength="10" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscSpkm" type="text" maxlength="7" style="	width: 50px;" placeholder="xxx-xxx" class="p-0 px-0 m-0 mx-0">
+                  </td>
+                </tr>
+                <tr>
+                  <td style=" padding: 0px;">
+                    <input id="fiscHora" type="time" style="width: 80px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscMarca" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscModelo" type="text" maxlength="9" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPlaca" type="text" maxlength="8" style="	width: 90px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscNomeCond" type="text" maxlength="20" style="	width: 200px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscCnhCond" type="tel" maxlength="15" style="	width: 160px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscPmrv" type="text" maxlength="10" style="	width: 100px;" class="p-0 px-0">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="fiscSpkm" type="text" maxlength="7" style="	width: 50px;" placeholder="xxx-xxx" class="p-0 px-0 m-0 mx-0">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!--
+
+pessoas abordadas
+
+-->
+          <div class="table-responsive">
+            <table class="table table-sm" id="borderTb0">
+              <thead>
+                <tr>
+                  <th colspan="6">PESSOAS ABORDADAS</th>
+                </tr>
+                <tr>
+                  <th colspan="1" align="center" style="font-size: 0.7rem;">Hora</th>
+                  <th colspan="1" align="center" style="font-size: 0.7rem;">Nome</th>
+                  <th colspan="1" align="center" style="font-size: 0.7rem;">DocTipo</th>
+                  <th colspan="1" align="center" style="font-size: 0.7rem;">NúmeroDoc</th>
+                  <th colspan="1" align="center" style="font-size: 0.7rem;">PMRv</th>
+                  <th colspan="1" align="center" style="font-size: 0.7rem;">SP/Km</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style=" padding: 0px;">
+                    <input id="pessHora" type="time" style="width: 80px; class=" p-0="">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessNome" type="text" maxlength="25" style="	width: 270px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <select id="pessDocTipo" class="form-control form-control-sm" style="width: 75px; padding: 0px;height: 25px;">
+                      <option selected="" value="Escolha...">Escolha...</option>
+                      <option value="CNH">CNH</option>
+                      <option value="CPF">CPF</option>
+                      <option value="RG">RG</option>
+                      <option value="Outro">Outro</option>
+                    </select>
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessNum" type="text" maxlength="15" style="	width: 160px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessPm" type="text" maxlength="20" style="	width: 200px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessSpkm" type="text" maxlength="7" style="	width: 80px;">
+                  </td>
+                </tr>
+                  <tr>
+                  <td style=" padding: 0px;">
+                    <input id="pessHora" type="time" style="width: 80px; class=" p-0="">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessNome" type="text" maxlength="25" style="	width: 270px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <select id="pessDocTipo" class="form-control form-control-sm" style="width: 75px; padding: 0px;height: 25px;">
+                      <option selected="" value="Escolha...">Escolha...</option>
+                      <option value="CNH">CNH</option>
+                      <option value="CPF">CPF</option>
+                      <option value="RG">RG</option>
+                      <option value="Outro">Outro</option>
+                    </select>
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessNum" type="text" maxlength="15" style="	width: 160px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessPm" type="text" maxlength="20" style="	width: 200px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessSpkm" type="text" maxlength="7" style="	width: 80px;">
+                  </td>
+                </tr>
+                  <tr>
+                  <td style=" padding: 0px;">
+                    <input id="pessHora" type="time" style="width: 80px; class=" p-0="">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessNome" type="text" maxlength="25" style="	width: 270px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <select id="pessDocTipo" class="form-control form-control-sm" style="width: 75px; padding: 0px;height: 25px;">
+                      <option selected="" value="Escolha...">Escolha...</option>
+                      <option value="CNH">CNH</option>
+                      <option value="CPF">CPF</option>
+                      <option value="RG">RG</option>
+                      <option value="Outro">Outro</option>
+                    </select>
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessNum" type="text" maxlength="15" style="	width: 160px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessPm" type="text" maxlength="20" style="	width: 200px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessSpkm" type="text" maxlength="7" style="	width: 80px;">
+                  </td>
+                </tr>
+                  <tr>
+                  <td style=" padding: 0px;">
+                    <input id="pessHora" type="time" style="width: 80px; class=" p-0="">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessNome" type="text" maxlength="25" style="	width: 270px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <select id="pessDocTipo" class="form-control form-control-sm" style="width: 75px; padding: 0px;height: 25px;">
+                      <option selected="" value="Escolha...">Escolha...</option>
+                      <option value="CNH">CNH</option>
+                      <option value="CPF">CPF</option>
+                      <option value="RG">RG</option>
+                      <option value="Outro">Outro</option>
+                    </select>
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessNum" type="text" maxlength="15" style="	width: 160px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessPm" type="text" maxlength="20" style="	width: 200px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessSpkm" type="text" maxlength="7" style="	width: 80px;">
+                  </td>
+                </tr>
+                  <tr>
+                  <td style=" padding: 0px;">
+                    <input id="pessHora" type="time" style="width: 80px; class=" p-0="">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessNome" type="text" maxlength="25" style="	width: 270px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <select id="pessDocTipo" class="form-control form-control-sm" style="width: 75px; padding: 0px;height: 25px;">
+                      <option selected="" value="Escolha...">Escolha...</option>
+                      <option value="CNH">CNH</option>
+                      <option value="CPF">CPF</option>
+                      <option value="RG">RG</option>
+                      <option value="Outro">Outro</option>
+                    </select>
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessNum" type="text" maxlength="15" style="	width: 160px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessPm" type="text" maxlength="20" style="	width: 200px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessSpkm" type="text" maxlength="7" style="	width: 80px;">
+                  </td>
+                </tr>
+                  <tr>
+                  <td style=" padding: 0px;">
+                    <input id="pessHora" type="time" style="width: 80px; class=" p-0="">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessNome" type="text" maxlength="25" style="	width: 270px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <select id="pessDocTipo" class="form-control form-control-sm" style="width: 75px; padding: 0px;height: 25px;">
+                      <option selected="" value="Escolha...">Escolha...</option>
+                      <option value="CNH">CNH</option>
+                      <option value="CPF">CPF</option>
+                      <option value="RG">RG</option>
+                      <option value="Outro">Outro</option>
+                    </select>
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessNum" type="text" maxlength="15" style="	width: 160px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessPm" type="text" maxlength="20" style="	width: 200px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessSpkm" type="text" maxlength="7" style="	width: 80px;">
+                  </td>
+                </tr>
+                  <tr>
+                  <td style=" padding: 0px;">
+                    <input id="pessHora" type="time" style="width: 80px; class=" p-0="">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessNome" type="text" maxlength="25" style="	width: 270px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <select id="pessDocTipo" class="form-control form-control-sm" style="width: 75px; padding: 0px;height: 25px;">
+                      <option selected="" value="Escolha...">Escolha...</option>
+                      <option value="CNH">CNH</option>
+                      <option value="CPF">CPF</option>
+                      <option value="RG">RG</option>
+                      <option value="Outro">Outro</option>
+                    </select>
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessNum" type="text" maxlength="15" style="	width: 160px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessPm" type="text" maxlength="20" style="	width: 200px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessSpkm" type="text" maxlength="7" style="	width: 80px;">
+                  </td>
+                </tr>
+                  <tr>
+                  <td style=" padding: 0px;">
+                    <input id="pessHora" type="time" style="width: 80px; class=" p-0="">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessNome" type="text" maxlength="25" style="	width: 270px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <select id="pessDocTipo" class="form-control form-control-sm" style="width: 75px; padding: 0px;height: 25px;">
+                      <option selected="" value="Escolha...">Escolha...</option>
+                      <option value="CNH">CNH</option>
+                      <option value="CPF">CPF</option>
+                      <option value="RG">RG</option>
+                      <option value="Outro">Outro</option>
+                    </select>
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessNum" type="text" maxlength="15" style="	width: 160px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessPm" type="text" maxlength="20" style="	width: 200px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessSpkm" type="text" maxlength="7" style="	width: 80px;">
+                  </td>
+                </tr>
+                  <tr>
+                  <td style=" padding: 0px;">
+                    <input id="pessHora" type="time" style="width: 80px; class=" p-0="">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessNome" type="text" maxlength="25" style="	width: 270px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <select id="pessDocTipo" class="form-control form-control-sm" style="width: 75px; padding: 0px;height: 25px;">
+                      <option selected="" value="Escolha...">Escolha...</option>
+                      <option value="CNH">CNH</option>
+                      <option value="CPF">CPF</option>
+                      <option value="RG">RG</option>
+                      <option value="Outro">Outro</option>
+                    </select>
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessNum" type="text" maxlength="15" style="	width: 160px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessPm" type="text" maxlength="20" style="	width: 200px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessSpkm" type="text" maxlength="7" style="	width: 80px;">
+                  </td>
+                </tr>
+                  <tr>
+                  <td style=" padding: 0px;">
+                    <input id="pessHora" type="time" style="width: 80px; class=" p-0="">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessNome" type="text" maxlength="25" style="	width: 270px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <select id="pessDocTipo" class="form-control form-control-sm" style="width: 75px; padding: 0px;height: 25px;">
+                      <option selected="" value="Escolha...">Escolha...</option>
+                      <option value="CNH">CNH</option>
+                      <option value="CPF">CPF</option>
+                      <option value="RG">RG</option>
+                      <option value="Outro">Outro</option>
+                    </select>
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessNum" type="text" maxlength="15" style="	width: 160px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessPm" type="text" maxlength="20" style="	width: 200px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessSpkm" type="text" maxlength="7" style="	width: 80px;">
+                  </td>
+                </tr>
+                  <tr>
+                  <td style=" padding: 0px;">
+                    <input id="pessHora" type="time" style="width: 80px; class=" p-0="">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessNome" type="text" maxlength="25" style="	width: 270px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <select id="pessDocTipo" class="form-control form-control-sm" style="width: 75px; padding: 0px;height: 25px;">
+                      <option selected="" value="Escolha...">Escolha...</option>
+                      <option value="CNH">CNH</option>
+                      <option value="CPF">CPF</option>
+                      <option value="RG">RG</option>
+                      <option value="Outro">Outro</option>
+                    </select>
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessNum" type="text" maxlength="15" style="	width: 160px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessPm" type="text" maxlength="20" style="	width: 200px;">
+                  </td>
+                  <td style=" padding: 0px;">
+                    <input id="pessSpkm" type="text" maxlength="7" style="	width: 80px;">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!--
+
+novidades
+
+-->
+          <div class="table-responsive">
+            <table class="table table-sm" id="borderTb0">
+              <thead>
+                <tr>
+                  <th>NOVIDADES - OBSERVAÇÕES</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="form-group">
+                      <textarea class="form-control" rows="25" style="overflow-y: hidden; resize: vertical"></textarea>
+                        <!-- verificar para que o tamanho da caixa seja expandida automaticamente para que todo o conteúdo digitado fique visível e seja 
+                            permitido imprimir todo o texto -->
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!--
+
+fim novidades
+
+-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
+</body>
+
+</html>
