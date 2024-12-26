@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="pdf2.css"/>
+    
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
+</head>
+<body>
+    <form id="invoiceForm">
+            <div>
+              <label for="raiaNum">Num Raia:</label>
+              <input type="text" id="raiaNum" />
+            </div>
+            <div>
+              <label for="codOPM">Cod OPM:</label>
+              <input type="text" id="codOPM" />
+            </div>
+            <div>
+              <label for="natureza">Natureza:</label>
+              <textarea id="natureza"></textarea>
+            </div>
+      
+        <button type="button" onclick="fillPdf()">Preencher PDF</button>
+    </form>
+      <script>
+        async function fillPdf() {
+        // Carregue o PDF preenchível
+        const pdfUrl = '../modelo/PMO31Modoptimize.pdf';  // Substitua com o caminho para o PDF
+        const existingPdfBytes = await fetch(pdfUrl).then(res => res.arrayBuffer());
+
+        // Carregue o PDF usando pdf-lib
+        const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
+        const form = pdfDoc.getForm();
+
+        //obter todos os campos do formulario
+        const fields = form.getFields();
+
+        // Obtenha os valores dos campos HTML
+        const raiaNum = document.getElementById('raiaNum').value;
+        const codOPM = document.getElementById('codOPM').value;
+        const natureza = document.getElementById('natureza').value;
+
+        // Mapear para os campos do PDF usando seus nomes
+        form.getTextField('raiaNum').setText(raiaNum);
+        form.getTextField('codOPM').setText(codOPM);
+        form.getTextField('natureza').setText(natureza);
+
+        // Salvar o PDF preenchido
+        const pdfBytes = await pdfDoc.save();
+
+        // Chame a função
+        removeEmptyFieldsAndDisplay(pdfBytes);        
+
+        // // Download do PDF preenchido
+        // const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+        // const link = document.createElement('a');
+        // link.href = URL.createObjectURL(blob);
+        // link.download = 'invoice_filled.pdf';
+        // link.click();
+
+        // Abrir em uma nova aba
+        // Converte os bytes para um Blob
+        //const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+
+        // Cria uma URL para o Blob
+        //const url = URL.createObjectURL(blob);
+
+        // Abre o PDF em uma nova aba
+        //window.open(url, '_blank');
+
+        };
+
+        async function removeEmptyFieldsAndDisplay(pdfBytesSalvo) {
+          // Carregue o PDF com campos editáveis
+          //const pdfUrl = '/path/to/your/form.pdf'; // Substitua pelo caminho do PDF
+          //const existingPdfBytes = await fetch(pdfUrl).then((res) => res.arrayBuffer());
+
+          // Carregue o documento PDF
+          const pdfDoc = await PDFLib.PDFDocument.load(pdfBytesSalvo);
+          //const pdfDoc = await PDFDocument.load(pdfBytesSalvo);
+
+          // Obtenha todos os campos do formulário
+          const form = pdfDoc.getForm();
+          const fields = form.getFields();
+
+          // Itera pelos campos do formulário
+          fields.forEach((field) => {
+            const fieldName = field.getName();
+            const fieldValue = field.getText() || ''; // Obtém o valor do campo (ou vazio)
+            
+            console.log("field Name", fieldName);
+            console.log("field Value", fieldValue);
+            console.table(fields);
+
+            if (!fieldValue.trim()) {
+              // Se o campo estiver vazio, remove-o
+              const fieldPage = field.getPage();
+              const fieldRect = field.getWidgets()[0].getRectangle();
+
+              // Substitua o campo vazio por um texto fixo, se necessário
+              fieldPage.drawText('', {
+                x: fieldRect.x1,
+                y: fieldRect.y1,
+                size: 0, // Define o texto como "invisível" se quiser apenas remover visualmente
+              });
+
+              // Opcional: Apenas remova o campo
+              //form.removeField(fieldName);
+            }
+          });
+
+          // Salve o PDF atualizado
+          const pdfBytesAtualizado = await pdfDoc.save();
+
+          // Exiba o PDF no navegador
+          //const blob = new Blob([pdfBytesAtualizado], { type: 'application/pdf' });
+          //const url = URL.createObjectURL(blob);
+
+          // Abre o PDF em uma nova aba
+          window.open(url, '_blank');
+        }
+
+
+
+
+      </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Marcar Campos como Somente Leitura</title>
+
+</head>
+<body>
+  <input type="file" id="pdfFile" accept=".pdf">
+  <ul id="fieldList"></ul>
+  <button type="button" onclick="processPDF()">Processar PDF</button>
+
+  <script>
+    // JavaScript aqui
+    import { PDFDocument } from 'pdf-lib'
+
+    //document.addEventListener('DOMContentLoaded', () => {
+    async function processPDF() {
+    const inputElement = document.getElementById('pdfFile');
+    const file = inputElement.files[0];
+
+    const arrayBuffer = await file.arrayBuffer();
+    const pdfDoc = await PDFDocument.load(arrayBuffer);
+    const pages = pdfDoc.getPages();
+
+    const fieldList = document.getElementById('fieldList');
+    fieldList.innerHTML = ''; // Limpa a lista antes de preencher
+
+    pages.forEach(page => {
+        const annotations = page.getAnnotations();
+
+        annotations.forEach(annotation => {
+        if (annotation.Subtype === 'Widget') {
+            const listItem = document.createElement('li');
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.value = annotation.T; // Nome do campo
+            listItem.appendChild(checkbox);
+            listItem.appendChild(document.createTextNode(annotation.T));
+            fieldList.appendChild(listItem);
+        }
+        });
+    });
+
+  // Função para marcar os campos como somente leitura
+  async function markFieldsReadOnly() {
+    const checkboxes = document.querySelectorAll('#fieldList input[type="checkbox"]:checked');
+    checkboxes.forEach(checkbox => {
+      const fieldName = checkbox.value;
+      // Procurar o campo no PDF e marcar como somente leitura
+      // ... (código para encontrar o campo e marcar como somente leitura)
+      // Dentro da função markFieldsReadOnly:
+        annotations.forEach(annotation => {
+            if (annotation.Subtype === 'Widget' && annotation.T === fieldName) {
+                annotation.setFlags(annotation.Flags | 4); // Marcar como somente leitura
+            }
+        });
+    });
+
+    // Salvar o PDF com as alterações
+    const pdfBytes = await pdfDoc.save();
+    // ... (salvar o novo PDF)
+  }
+
+  // Adicionar um botão para marcar os campos
+  const markButton = document.createElement('button');
+  markButton.textContent = 'Marcar Campos';
+  markButton.onclick = markFieldsReadOnly;
+  document.body.appendChild(markButton);
+}
+//});
+  </script>
+</body>
+</html>
